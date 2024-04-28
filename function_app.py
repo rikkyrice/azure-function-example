@@ -1,17 +1,17 @@
-import os
-from azure.cosmos.aio import CosmosClient
-from azure.cosmos import exceptions
-from azure.cosmos.partition_key import PartitionKey
-import asyncio
+# import os
+# from azure.cosmos.aio import CosmosClient
+# from azure.cosmos import exceptions
+# from azure.cosmos.partition_key import PartitionKey
+# import asyncio
 import azure.functions as func
 import logging
-import dotenv
+# import dotenv
 
-dotenv.load_dotenv()
+# dotenv.load_dotenv()
 
-COSMOSDB_ENDPOINT = os.environ.get("COSMOSDB_ENDPOINT")
-COSMOSDB_CONNECTION_KEY = os.environ.get("COSMOSDB_CONNECTION_KEY")
-COSMOSDB_DATABASE = os.environ.get("COSMOSDB_DATABASE")
+# COSMOSDB_ENDPOINT = os.environ.get("COSMOSDB_ENDPOINT")
+# COSMOSDB_CONNECTION_KEY = os.environ.get("COSMOSDB_CONNECTION_KEY")
+# COSMOSDB_DATABASE = os.environ.get("COSMOSDB_DATABASE")
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
