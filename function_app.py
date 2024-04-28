@@ -52,7 +52,7 @@ def HTTPExample2(req: func.HttpRequest) -> func.HttpResponse:
         )
     
 @app.route(route="HTTPExample3")
-def HTTPExample2(req: func.HttpRequest) -> func.HttpResponse:
+def HTTPExample3(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
 
     name = req.params.get("name")
