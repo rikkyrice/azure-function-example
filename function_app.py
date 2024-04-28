@@ -63,16 +63,45 @@ async def query_products(product_name):
     items.append(item)
   return items
 
-@app.route(route="HTTPExample")
-async def HTTPExample(req: func.HttpRequest) -> func.HttpResponse:
-  logging.info("Python HTTP trigger function processed a request.")
-  # await create_products()
-  all_products = await get_products()
-  print('All Products:', all_products)
+# @app.route(route="HTTPExample")
+# async def HTTPExample(req: func.HttpRequest) -> func.HttpResponse:
+#   logging.info("Python HTTP trigger function processed a request.")
+#   # await create_products()
+#   all_products = await get_products()
+#   print('All Products:', all_products)
 
-  return func.HttpResponse(
-      f"{all_products}"
-  )
+#   return func.HttpResponse(
+#       f"{all_products}"
+#   )
+
+@app.route(route="HTTPExample")
+def HTTPExample(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info("Python HTTP trigger function processed a request.")
+
+    name = req.params.get("name")
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get("name")
+
+    if name:
+        return func.HttpResponse(
+            f"Hello, {name}. This HTTP triggered function executed successfully."
+        )
+    else:
+        return func.HttpResponse(
+            "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
+            status_code=200,
+        )
 
   # queried_products = await query_products('Widget')
   # print('Queried Products:', queried_products)
+
+# async def main():
+#   all_products = await get_products()
+#   print('All Products:', all_products)
+
+# asyncio.run(main())
