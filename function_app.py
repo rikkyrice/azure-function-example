@@ -1,6 +1,6 @@
 import os
 from azure.cosmos.aio import CosmosClient
-from azure.cosmos import exceptions
+# from azure.cosmos import exceptions
 from azure.cosmos.partition_key import PartitionKey
 # import asyncio
 import azure.functions as func
@@ -24,7 +24,7 @@ container_id = "Items"
 partition_key = "/ProjectId"
 
 # Set the total throughput (RU/s) for the database and container
-database_throughput = 1000
+# database_throughput = 1000
 
 # Singleton CosmosClient instance
 client = CosmosClient(endpoint, credential=key)
